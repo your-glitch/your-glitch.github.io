@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زيت و ورد - مدونة متخصصة في الزيوت الطبيعية والورود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8e5a2e;
+            --secondary-color: #d4a373;
+            --accent-color: #a4b494;
+            --light-color: #f9f6f1;
+            --dark-color: #333333;
+            --text-color: #444444;
+            --border-color: #e3d5c1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .blog-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .posts-container {
+            flex: 2;
+        }
+        
+        .sidebar {
+            flex: 1;
+        }
+        
+        /* Post Styles */
+        .post {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .post-header {
+            padding: 25px;
+        }
+        
+        .post-date {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .post-title {
+            font-family: 'Cairo', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .post-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .post-content {
+            padding: 25px;
+            line-height: 1.9;
+        }
+        
+        .post-footer {
+            padding: 20px 25px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .read-more {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .read-more:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Sidebar Styles */
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .widget-title {
+            font-family: 'Cairo', sans-serif;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .about-me {
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--border-color);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .categories-list a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary-color);
+        }
+        
+        .categories-list span {
+            background-color: var(--light-color);
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Search Widget */
+        .search-form {
+            display: flex;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px 0 0 5px;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .search-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background-color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+        }
+        
+        .footer-title {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .blog-title {
+                font-size: 2.2rem;
+            }
+            
+            .post-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1 class="blog-title">زيت و ورد</h1>
+            <p class="blog-description">مدونة متخصصة في الزيوت الطبيعية والورود وكل ما يتعلق بالجمال الطبيعي والعناية الشخصية</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">زيت و ورد</div>
+            <ul class="nav-links">
+                <li><a href="#">الرئيسية</a></li>
+                <li><a href="#">الزيوت الطبيعية</a></li>
+                <li><a href="#">الورود والعطور</a></li>
+                <li><a href="#">وصفات طبيعية</a></li>
+                <li><a href="#">نصائح الجمال</a></li>
+                <li><a href="#">منتجات مميزة</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Posts Section -->
+        <div class="posts-container">
+            <!-- Post 1 -->
+            <article class="post">
+                <div class="post-header">
+                    <div class="post-date">15 أكتوبر 2023</div>
+                    <h2 class="post-title">فوائد زيت الزيتون للبشرة والشعر</h2>
+                </div>
+                <img src="https://placehold.co/800x400/8e5a2e/white?text=زيت+الزيتون" alt="زيت الزيتون" class="post-image">
+                <div class="post-content">
+                    <p>زيت الزيتون هو من أفضل الزيوت الطبيعية التي لها فوائد عديدة للبشرة والشعر. يحتوي على مضادات الأكسدة والفيتامينات التي تغذي البشرة وتحميها من الجفاف والتجاعيد. في هذه المقالة، سنستعرض أهم فوائد زيت الزيتون وكيفية استخدامه للحصول على أفضل النتائج.</p>
+                    <p>لزيت الزيتون تاريخ طويل في الاستخدامات التجميلية والعلاجية منذ العصور القديمة. كان يستخدمه المصريون القدماء واليونانيون والرومان في علاج البشرة والشعر، وما زال حتى اليوم من أفضل المواد الطبيعية للعناية بالجمال.</p>
+                </div>
+                <div class="post-footer">
+                    <div class="post-tags">
+                        <span>الزيوت الطبيعية</span>
+                        <span>العناية بالبشرة</span>
+                        <span>العناية بالشعر</span>
+                    </div>
+                    <a href="#" class="read-more">قراءة المزيد</a>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="post">
+                <div class="post-header">
+                    <div class="post-date">12 أكتوبر 2023</div>
+                    <h2 class="post-title">كيفية استخلاص عطر الورد في المنزل</h2>
+                </div>
+                <img src="https://placehold.co/800x400/d4a373/white?text=عطر+الورد" alt="عطر الورد" class="post-image">
+                <div class="post-content">
+                    <p>الورد من أجمل الزهور التي تمتلك رائحة عطرة ومميزة. استخلاص عطر الورد في المنزل عملية بسيطة لا تحتاج إلى أدوات معقدة. في هذه المقالة، سنشرح خطوة بخطوة كيفية استخلاص عطر الورد الطبيعي في المنزل باستخدام مواد بسيطة ومتوفرة.</p>
+                    <p>عطر الورد الطبيعي له فوائد عديدة除了 كونه ذو رائحة جميلة، فهو أيضاً مهدئ للأعصاب ويستخدم في العلاج بالروائح. صناعة العطور في المنزل تضمن لك الحصول على منتج طبيعي خالي من المواد الكيميائية الضارة.</p>
+                </div>
+                <div class="post-footer">
+                    <div class="post-tags">
+                        <span>الورود</span>
+                        <span>العطور الطبيعية</span>
+                        <span>اصنعها بنفسك</span>
+                    </div>
+                    <a href="#" class="read-more">قراءة المزيد</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- About Me Widget -->
+            <div class="sidebar-widget about-me">
+                <h3 class="widget-title">عن المدونة</h3>
+                <img src="https://placehold.co/150x150/8e5a2e/white?text=ز" alt="صورة المدونة" class="profile-img">
+                <p class="mb-20">مدونة "زيت و ورد" تهتم بكل ما هو طبيعي وجميل. نشارككم وصفات ونصائح للعناية بالبشرة والشعر باستخدام الزيوت الطبيعية والورود.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <!-- Categories Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">التصنيفات</h3>
+                <ul class="categories-list">
+                    <li><a href="#">الزيوت الطبيعية <span>15</span></a></li>
+                    <li><a href="#">الورود والعطور <span>9</span></a></li>
+                    <li><a href="#">وصفات طبيعية <span>23</span></a></li>
+                    <li><a href="#">نصائح الجمال <span>17</span></a></li>
+                    <li><a href="#">منتجات مميزة <span>6</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Search Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">بحث</h3>
+                <form class="search-form">
+                    <input type="text" placeholder="ابحث في المدونة..." class="search-input">
+                    <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Popular Posts Widget -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">المقالات الشائعة</h3>
+                <ul class="categories-list">
+                    <li><a href="#">خلطات زيت الزيتون للشعر الطويل والكثيف</a></li>
+                    <li><a href="#">كيفية صناعة الصابون الطبيعي بالورد</a></li>
+                    <li><a href="#">أفضل الزيوت للبشرة الجافة</a></li>
+                    <li><a href="#">طريقة تحضير ماء الورد في المنزل</a></li>
+                    <li><a href="#">فوائد زيت اللوز للبشرة والجسم</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 class="footer-title">زيت و ورد</h3>
+                    <p>مدونة متخصصة في الزيوت الطبيعية والورود وكل ما يتعلق بالجمال الطبيعي والعناية الشخصية.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">عن المدونة</a></li>
+                        <li><a href="#">المقالات</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 class="footer-title">التصنيفات</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الزيوت الطبيعية</a></li>
+                        <li><a href="#">الورود والعطور</a></li>
+                        <li><a href="#">وصفات طبيعية</a></li>
+                        <li><a href="#">نصائح الجمال</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 زيت و ورد. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to read more buttons
+            const readMoreButtons = document.querySelectorAll('.read-more');
+            
+            readMoreButtons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(-5px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+            
+            // Add animation to social icons
+            const socialIcons = document.querySelectorAll('.social-links a');
+            
+            socialIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.1)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
